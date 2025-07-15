@@ -8,6 +8,11 @@ app.use(express.json());
 
 const DATA_FILE = './tasks.json';
 
+// Ana sayfa kontrolü
+app.get('/', (req, res) => {
+  res.send('Görev listesi API çalışıyor!');
+});
+
 // Görevleri getir
 app.get('/tasks', (req, res) => {
     if (!fs.existsSync(DATA_FILE)) return res.json([]);
@@ -36,12 +41,9 @@ app.delete('/tasks/:id', (req, res) => {
     res.json({ message: 'Görev silindi' });
 });
 
-const PORT = 3000;
+// Port ayarı (Railway için)
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Sunucu çalişiyor: http://localhost:${PORT}`);
-});
-app.get('/', (req, res) => {
-  res.send('Görev listesi API çalışıyor!');
+    console.log(`Sunucu çalışıyor: http://localhost:${PORT}`);
 });
 
-;
