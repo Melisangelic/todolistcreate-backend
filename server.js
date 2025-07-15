@@ -3,11 +3,10 @@ const fs = require('fs');
 const cors = require('cors');
 const app = express();
 
-app.use(cors({
-  origin: 'https://todolistcreate-frontend.vercel.app'
-}));
+app.use(cors()); // Bu satır sade olacak, fazladan parantez yok
 
 app.use(express.json());
+
 
 
 const DATA_FILE = './tasks.json';
